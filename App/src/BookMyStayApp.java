@@ -1,5 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class Reservation {
 
@@ -18,48 +17,99 @@ class Reservation {
     public String getRoomType() {
         return roomType;
     }
+}
 
-    public void displayReservation() {
-        System.out.println("Guest: " + guestName + " | Requested Room: " + roomType);
+class RoomInventory {
+
+    private Map<String, Integer> roomAvailability;
+
+    public RoomInventory() {
+        roomAvailability = new HashMap<>();
+        roomAvailability.put("Single", 5);
+        roomAvailability.put("Double", 3);
+        roomAvailability.put("Suite", 2);
+    }
+
+    public Map<String, Integer> getRoomAvailability() {
+        return roomAvailability;
+    }
+
+    public void updateAvailability(String roomType, int count) {
+        roomAvailability.put(roomType, count);
     }
 }
 
-class BookingRequestQueue {
+class RoomAllocationService {
 
-    private Queue<Reservation> requestQueue;
+    private Set<String> allocatedRoomIds;
+    private Map<String, Set<String>> assignedRoomsByType;
 
-    public BookingRequestQueue() {
-        requestQueue = new LinkedList<>();
+    public RoomAllocationService() {
+        allocatedRoomIds = new HashSet<>();
+        assignedRoomsByType = new HashMap<>();
     }
 
-    public void addRequest(Reservation reservation) {
-        requestQueue.offer(reservation);
-        System.out.println("Booking request added for " + reservation.getGuestName());
-    }
+    public void allocateRoom(Reservation reservation, RoomInventory inventory) {
 
-    public void displayQueue() {
+        String roomType = reservation.getRoomType();
+        int available = inventory.getRoomAvailability().get(roomType);
 
-        System.out.println("\nBooking Requests Queue");
-
-        for (Reservation r : requestQueue) {
-            r.displayReservation();
+        if (available <= 0) {
+            System.out.println("No rooms available for " + roomType);
+            return;
         }
+
+        String roomId = generateRoomId(roomType);
+
+        allocatedRoomIds.add(roomId);
+
+        assignedRoomsByType.putIfAbsent(roomType, new HashSet<>());
+        assignedRoomsByType.get(roomType).add(roomId);
+
+        inventory.updateAvailability(roomType, available - 1);
+
+        System.out.println("Booking confirmed for Guest: " +
+                reservation.getGuestName() +
+                ", Room ID: " + roomId);
+    }
+
+    private String generateRoomId(String roomType) {
+
+        int number = 1;
+
+        if (assignedRoomsByType.containsKey(roomType)) {
+            number = assignedRoomsByType.get(roomType).size() + 1;
+        }
+
+        String roomId = roomType + "-" + number;
+
+        while (allocatedRoomIds.contains(roomId)) {
+            number++;
+            roomId = roomType + "-" + number;
+        }
+
+        return roomId;
     }
 }
 
+public class UseCase6RoomAllocationService {
 
-public class BookMyStayApp {
-    public static void main (String[] args){
-        BookingRequestQueue bookingQueue = new BookingRequestQueue();
+    public static void main(String[] args) {
 
-        Reservation r1 = new Reservation("Abhi", "Single Room");
-        Reservation r2 = new Reservation("Subha", "Double Room");
-        Reservation r3 = new Reservation("Vanmathi", "Suite Room");
+        System.out.println("Room Allocation Processing");
 
-        bookingQueue.addRequest(r1);
-        bookingQueue.addRequest(r2);
-        bookingQueue.addRequest(r3);
+        RoomInventory inventory = new RoomInventory();
+        RoomAllocationService allocator = new RoomAllocationService();
 
-        bookingQueue.displayQueue();
+        Queue<Reservation> bookingQueue = new LinkedList<>();
+
+        bookingQueue.add(new Reservation("Neha", "Single"));
+        bookingQueue.add(new Reservation("Thanu", "Single"));
+        bookingQueue.add(new Reservation("Arun", "Suite"));
+
+        while (!bookingQueue.isEmpty()) {
+            Reservation reservation = bookingQueue.poll();
+            allocator.allocateRoom(reservation, inventory);
+        }
     }
 }
