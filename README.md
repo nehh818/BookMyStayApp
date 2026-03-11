@@ -18,3 +18,10 @@
 # Updates to availability are performed through controlled methods.
 # The current inventory state is displayed when requested.
 ======
+# UC4-RoomSearchAvailability
+# Guest initiates a room search request.
+# The system retrieves availability data from the inventory.
+# Unavailable room types are filtered out.
+# Available room types and their details are displayed.
+# System state remains unchanged.
+======
