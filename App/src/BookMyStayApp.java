@@ -19,8 +19,8 @@ public class BookMyStayApp {
 
         // Welcome Message Output
         System.out.println("==============================================");
-        System.out.println("        Welcome to " + appName);
-        System.out.println("                 " + version);
+        System.out.println("        Welcome to " + BookMyStayApp);
+        System.out.println("                 " + version 1.0);
         System.out.println("==============================================");
         System.out.println("Application started successfully.");
         System.out.println("Thank you for using Book My Stay!");
