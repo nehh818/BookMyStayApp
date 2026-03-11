@@ -25,3 +25,10 @@
 # Available room types and their details are displayed.
 # System state remains unchanged.
 ======
+# UC5-BookingRequest
+# Guest submits a booking request
+# The request is added to the booking queue.
+# Requests are stored in arrival order.
+# Queued requests wait for processing by the allocation system.
+# No inventory mutation occurs at this stage.
+======
