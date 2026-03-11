@@ -11,3 +11,10 @@
 # Availability for each room type is stored using simple variables.
 # Room details and availability information are printed to the console.
 ======
+# UC3-CentralizedRoomandInventoryManagement
+# The system initializes the inventory component.
+# Room types are registered with their available counts.
+# Availability is stored and retrieved from a centralized HashMap.
+# Updates to availability are performed through controlled methods.
+# The current inventory state is displayed when requested.
+======
