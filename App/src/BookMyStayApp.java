@@ -79,7 +79,7 @@ public class BookMyStayApp{
 
         System.out.println("Single Room:");
         singleRoom.displayRoomDetails();
-        System.out.println("Available Rooms: " + inventory.getRoomAvailability().get("Single"));
+        System.out.println("Available Rooms: " +inventory.getRoomAvailability().get("Single"));
 
         System.out.println();
 
