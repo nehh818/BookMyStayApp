@@ -32,3 +32,11 @@
 # Queued requests wait for processing by the allocation system.
 # No inventory mutation occurs at this stage.
 ======
+# UC6-RoomReservationAllocation
+# Booking request is dequeued from the request queue.
+# The system checks availability for the requested room type.
+# A unique room ID is generated and assigned.
+# The room ID is recorded to prevent reuse.
+# Inventory count is decremented immediately.
+# Reservation is confirmed.
+======
