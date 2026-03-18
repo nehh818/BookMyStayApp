@@ -61,3 +61,10 @@
 # Display clear and informative failure messages.
 # Ensure the system remains stable after errors.
 ======
+# UC10-CancellationAndInventoryRollback
+# Allow cancellation of confirmed bookings only.
+# Validate reservation existence before performing rollback.
+# Release allocated room IDs back to the availability pool.
+# Restore inventory counts accurately and immediately.
+# Prevent cancellation of non-existent or already cancelled bookings.
+======
