@@ -75,3 +75,9 @@
 # Prevent double allocation under concurrent execution.
 # Maintain consistent system state under load.
 ======
+# UC12-DataPersistenceSysteRecovery
+# Persist booking history and inventory state to a file.
+# Restore persisted data during application startup.
+# Ensure the restored state accurately reflects the last saved state.# 
+# Handle missing or corrupted persistence files gracefully.
+# Allow the system to continue operating safely after recovery.
