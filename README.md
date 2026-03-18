@@ -68,3 +68,10 @@
 # Restore inventory counts accurately and immediately.
 # Prevent cancellation of non-existent or already cancelled bookings.
 ======
+# UC11-ConcurrentBooking
+# Simulate multiple booking requests occurring at the same time.
+# Use shared data structures for booking requests and inventory.
+# Ensure inventory updates are performed in a thread-safe manner.
+# Prevent double allocation under concurrent execution.
+# Maintain consistent system state under load.
+======
