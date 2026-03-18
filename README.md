@@ -54,3 +54,10 @@
 # Generate summary reports from booking history.
 # Ensure reporting does not modify stored booking data.
 ======
+# UC9-ErrorHandlingAndValidation
+# Validate room types before processing bookings.
+# Prevent inventory from reaching invalid or negative values.
+# Throw and handle custom exceptions for invalid scenarios.
+# Display clear and informative failure messages.
+# Ensure the system remains stable after errors.
+======
