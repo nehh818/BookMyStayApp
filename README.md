@@ -46,3 +46,11 @@
 # Calculate total additional cost for selected services.
 # Ensure add-on logic does not modify booking or inventory state.
 # Support easy addition of new service types.
+======
+# UC8-BookingHistory
+# Store each confirmed reservation in booking history.
+# Maintain bookings in the order they are confirmed.
+# Allow retrieval of stored reservations for review.
+# Generate summary reports from booking history.
+# Ensure reporting does not modify stored booking data.
+======
