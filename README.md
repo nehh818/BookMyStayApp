@@ -40,3 +40,9 @@
 # Inventory count is decremented immediately.
 # Reservation is confirmed.
 ======
+# UC7-AddOnService
+# Allow multiple services to be attached to a single reservation.
+# Store selected services using a reservation-to-services mapping.
+# Calculate total additional cost for selected services.
+# Ensure add-on logic does not modify booking or inventory state.
+# Support easy addition of new service types.
